@@ -19,7 +19,7 @@ public class ShootAbility : MonoBehaviour, IAbility
         if (Bullet != null)
         {
             var newBullet = Instantiate(Bullet, BulletSpawner.transform.position, Quaternion.identity);
-            newBullet.GetComponent<BulletComponent>().Direction = new Vector3(newBullet.transform.position.x - this.transform.position.x, 0, newBullet.transform.position.z - this.transform.position.z);
+            newBullet.GetComponent<Bullet>().Direction = new Vector3(newBullet.transform.position.x - this.transform.position.x, 0, newBullet.transform.position.z - this.transform.position.z);
         }
         else
         {
