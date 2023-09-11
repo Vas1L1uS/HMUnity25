@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityGoogleDrive.Data;
 
 public class ShootAbility : MonoBehaviour, IAbility
 {
@@ -11,6 +12,7 @@ public class ShootAbility : MonoBehaviour, IAbility
     public GameObject BulletSpawner;
     public float ShootDelay;
 
+    [SerializeField] private SaveLoadManager _saveLoadManager;
 
     private bool _isReflectedBullet;
     private float _shootTime = float.MinValue;
@@ -38,6 +40,7 @@ public class ShootAbility : MonoBehaviour, IAbility
             }
 
             newBullet.GetComponent<IBullet>().Direction = new Vector3(newBullet.transform.position.x - this.transform.position.x, 0, newBullet.transform.position.z - this.transform.position.z);
+            _saveLoadManager.Stats.ShotsCount++;
         }
         else
         {
