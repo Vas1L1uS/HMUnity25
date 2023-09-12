@@ -14,8 +14,6 @@ public class CharacterHealthAbility : MonoBehaviour, IHealthAbility
     [SerializeField] private float _invulnerableTime = 0.5f;
     [SerializeField] private ShootAbility _shootAbility;
 
-    [SerializeField] private SaveLoadManager _saveLoadManager;
-
     private void Awake()
     {
         _health = Settings.HeroHealth;
@@ -39,18 +37,12 @@ public class CharacterHealthAbility : MonoBehaviour, IHealthAbility
         if (_health <= 0)
         {
             _health = 0;
-            WriteStatisctics();
         }
     }
 
     public void GetHealth(int health)
     {
         _health += health;
-    }
-
-    private void WriteStatisctics()
-    {
-        _saveLoadManager.Save();
     }
 
     private IEnumerator TimerDontGetDamage(float time)

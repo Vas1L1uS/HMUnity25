@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 121d6a46835a3fc42ac2d1ecbf06ba91, type: 3}
-  m_Name: Google Drive Save Load Config
+  m_Script: {fileID: 11500000, guid: 2d1b201a042aad445ad016c3dd14ee1b, type: 3}
+  m_Name: My Player Settings Config
   m_EditorClassIdentifier: 
-  _fileName: PlayerSettings.json
-  _fileID: 1GaH8vWsvpNGTcTK9k4m-ZUydbqGs4DCW
+  MaxHealth: 5000
+  Speed: 2000
+  JumpHeight: 111111
+  Damage: 1000

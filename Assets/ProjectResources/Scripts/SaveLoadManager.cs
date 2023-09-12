@@ -7,26 +7,19 @@ using System;
 
 public class SaveLoadManager : MonoBehaviour
 {
-    [HideInInspector] public PlayerStats Stats;
-
+    [HideInInspector] public PlayerSettings Settings;
     [SerializeField] private GoogleDriveSaveLoadConfig _config;
+
+    public event Action LoadComplete;
 
     private void Awake()
     {
-        if (_config.FileId == string.Empty)
-        {
-            Stats = new PlayerStats();
-            Debug.Log($"FileId is empty! No file in GoogleDrive.");
-        }
-        else
-        {
-            LoadFile();
-        }
+        Settings = new PlayerSettings();
     }
 
     public void Save()
     {
-        var jsonString = JsonUtility.ToJson(Stats);
+        var jsonString = JsonUtility.ToJson(Settings);
 
         if (_config.FileId == string.Empty)
         {
@@ -41,7 +34,7 @@ public class SaveLoadManager : MonoBehaviour
 
     public void LoadFile()
     {
-        var jsonString = JsonUtility.ToJson(Stats);
+        var jsonString = JsonUtility.ToJson(Settings);
 
         if (_config.FileId == string.Empty)
         {
@@ -69,7 +62,8 @@ public class SaveLoadManager : MonoBehaviour
         string result = System.Text.Encoding.UTF8.GetString(request.ResponseData.Content);
         Debug.Log($"Load from GoogleDrive {result}");
 
-        Stats = JsonUtility.FromJson<PlayerStats>(result);
+        Settings = JsonUtility.FromJson<PlayerSettings>(result);
+        LoadComplete?.Invoke();
     }
 
     private void WriteUpdateFileInfo(GoogleDriveFiles.UpdateRequest request)
