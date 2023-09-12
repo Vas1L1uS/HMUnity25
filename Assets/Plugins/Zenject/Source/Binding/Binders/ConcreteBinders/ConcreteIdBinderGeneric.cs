@@ -1,3 +1,5 @@
+using System;
+
 namespace Zenject
 {
     [NoReflectionBaking]
@@ -8,6 +10,11 @@ namespace Zenject
             BindStatement bindStatement)
             : base(bindContainer, bindInfo, bindStatement)
         {
+        }
+
+        public void FromMethod(object v)
+        {
+            throw new NotImplementedException();
         }
 
         public ConcreteBinderGeneric<TContract> WithId(object identifier)

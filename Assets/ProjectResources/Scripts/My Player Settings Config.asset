@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d1b201a042aad445ad016c3dd14ee1b, type: 3}
   m_Name: My Player Settings Config
   m_EditorClassIdentifier: 
-  MaxHealth: 5000
-  Speed: 2000
-  JumpHeight: 111111
-  Damage: 1000
+  _maxHealth: 123
+  _speed: 52545
+  _jumpHeight: 124
+  _damage: 243

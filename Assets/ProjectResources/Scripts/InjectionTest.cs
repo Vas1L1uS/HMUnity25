@@ -3,16 +3,17 @@ using Zenject;
 
 public class InjectionTest : MonoBehaviour
 {
-    [SerializeField] private PlayerSettingsConfig _playerSettingsConfig;
+    private IPlayerSettings _playerSettings;
 
-    //[Inject]
-    //public void Init(ITest t)
-    //{
-    //    _test = t;
-    //}
+    [Inject]
+    public void Init(IPlayerSettings playerSettings)
+    {
+        _playerSettings = playerSettings;
+    }
 
-    //private void Start()
-    //{
-    //    _test.Echo();
-    //}
+    private void Start()
+    {
+        Debug.Log($"MaxHealth:{_playerSettings.MaxHealth}, Speed:{_playerSettings.Speed}," +
+            $" JumpHeight:{_playerSettings.JumpHeight}, Damage:{_playerSettings.Damage}");
+    }
 }

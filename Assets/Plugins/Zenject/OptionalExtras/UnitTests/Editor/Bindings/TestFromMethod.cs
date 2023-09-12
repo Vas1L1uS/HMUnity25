@@ -53,7 +53,7 @@ namespace Zenject.Tests.Bindings
                 return null;
             };
 
-            Container.Bind<Foo>().FromMethod(method).AsTransient().NonLazy();
+            //Container.Bind<Foo>().FromMethod(method).AsTransient().NonLazy();
             Container.Bind<IFoo>().To<Foo>().FromMethod(method).AsTransient().NonLazy();
 
             Container.Resolve<Foo>();
