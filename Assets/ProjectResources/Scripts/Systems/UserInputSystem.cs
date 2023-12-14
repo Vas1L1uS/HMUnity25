@@ -10,10 +10,12 @@ public class UserInputSystem : ComponentSystem
     private InputAction _moveAction;
     private InputAction _shootAction;
     private InputAction _dashRunAction;
+    private InputAction _flameAction;
 
     private float2 _moveInput;
     private float _shootInput;
     private float _dashRunInput;
+    private float _flameInput;
 
     protected override void OnCreate()
     {
@@ -40,11 +42,17 @@ public class UserInputSystem : ComponentSystem
         _shootAction.canceled += context => { _shootInput = context.ReadValue<float>(); };
         _shootAction.Enable();
 
-        _dashRunAction = new InputAction("shoot", binding: "<Keyboard>/shift");
+        _dashRunAction = new InputAction("run", binding: "<Keyboard>/shift");
         _dashRunAction.performed += context => { _dashRunInput = context.ReadValue<float>(); };
         _dashRunAction.started += context => { _dashRunInput = context.ReadValue<float>(); };
         _dashRunAction.canceled += context => { _dashRunInput = context.ReadValue<float>(); };
         _dashRunAction.Enable();
+
+        _flameAction = new InputAction("flame", binding: "<Keyboard>/f");
+        _flameAction.started += context => { _flameInput = 1; };
+        //_flameAction.performed += context => { _flameInput = 2; };
+        _flameAction.canceled += context => { _flameInput = 0; };
+        _flameAction.Enable();
     }
 
     protected override void OnStopRunning()
@@ -52,6 +60,7 @@ public class UserInputSystem : ComponentSystem
         _moveAction.Disable();
         _shootAction.Disable();
         _dashRunAction.Disable();
+        _flameAction.Disable();
     }
 
     protected override void OnUpdate()
@@ -62,6 +71,20 @@ public class UserInputSystem : ComponentSystem
                 inputData.Move = _moveInput;
                 inputData.Shoot = _shootInput;
                 inputData.DashRun = _dashRunInput;
+
+                if (_flameInput == 1 && inputData.Flame == 1)
+                {
+                    inputData.Flame = -1;
+                }
+                else if (_flameInput == 0)
+                {
+                    inputData.Flame = 0;
+                }
+                else if (inputData.Flame != -1)
+                {
+                    inputData.Flame = _flameInput;
+                }
+
             });
     }
 }

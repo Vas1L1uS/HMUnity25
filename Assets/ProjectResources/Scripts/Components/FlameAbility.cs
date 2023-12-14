@@ -1,32 +1,36 @@
+using System;
 using UnityEngine;
 
-public class FlameEffect : MonoBehaviour
+public class FlameAbility : MonoBehaviour, IAbility
 {
+    public event EventHandler Destroyed;
+
     [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] private SkinnedMeshRenderer _skinnedMeshRenderer;
     [SerializeField] private Material _flameMaterial;
 
     private Material _startMaterial;
-    private bool _isActive;
+
+    private bool _flamed;
 
     private void Awake()
     {
         _startMaterial = _skinnedMeshRenderer.material;
     }
 
-    public void OnClickFlameEffect()
+    public void Execute()
     {
-        if (_isActive == false)
+        _flamed = !_flamed;
+
+        if (_flamed)
         {
             _particleSystem.Play();
             _skinnedMeshRenderer.material = _flameMaterial;
-            _isActive = true;
         }
         else
         {
             _particleSystem.Stop();
             _skinnedMeshRenderer.material = _startMaterial;
-            _isActive = false;
         }
     }
 }

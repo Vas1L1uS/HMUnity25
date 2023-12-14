@@ -9,6 +9,7 @@ public class UserInputData : MonoBehaviour, IConvertGameObjectToEntity
     public float DashRunDuration;
     public float DashRunTimeReload;
     public MonoBehaviour ShootAction;
+    public MonoBehaviour FlameAction;
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
@@ -32,6 +33,7 @@ public struct InputData : IComponentData
 {
     public float2 Move;
     public float Shoot;
+    public float Flame;
     public float DashRun;
 }
 

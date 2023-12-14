@@ -8106,7 +8106,7 @@ GameObject:
   - component: {fileID: 1758630181}
   - component: {fileID: 1758630184}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: Flame button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8176,19 +8176,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1758630182}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1758630184}
-        m_TargetAssemblyTypeName: FlameEffect, Assembly-CSharp
-        m_MethodName: OnClickFlameEffect
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1758630182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8236,12 +8224,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1758630179}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fcd1b2e8c7c4d04d9d2089dbadfde8a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleSystem: {fileID: 531783864}
-  _skinnedMeshRenderer: {fileID: 6831905770370258130}
-  _flameMaterial: {fileID: 2100000, guid: f7352c021218c2443acc7793cfca9bff, type: 2}
+  m_ControlPath: <Keyboard>/f
 --- !u!1001 &1780603777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10936,6 +10922,7 @@ GameObject:
   - component: {fileID: 6831905770366151187}
   - component: {fileID: 6831905770366151188}
   - component: {fileID: 6831905770366151190}
+  - component: {fileID: 6831905770366151191}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -11090,6 +11077,7 @@ MonoBehaviour:
   DashRunDuration: 2
   DashRunTimeReload: 0.5
   ShootAction: {fileID: 6831905770366151188}
+  FlameAction: {fileID: 6831905770366151191}
 --- !u!114 &6831905770366151188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11136,6 +11124,21 @@ MonoBehaviour:
   _health: 100
   _invulnerableTime: 0.5
   _shootAbility: {fileID: 6831905770366151188}
+--- !u!114 &6831905770366151191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6831905770356660328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58101012af2ac443b1b9aa82b47149f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particleSystem: {fileID: 531783864}
+  _skinnedMeshRenderer: {fileID: 6831905770370258130}
+  _flameMaterial: {fileID: 2100000, guid: f7352c021218c2443acc7793cfca9bff, type: 2}
 --- !u!137 &6831905770370258130
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
